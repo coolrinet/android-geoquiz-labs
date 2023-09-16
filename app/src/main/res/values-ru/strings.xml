@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="question_australia">Канберра - это столица Австралии.</string>
+    <string name="question_oceans">Тихий океан по площади больше Атлантического.</string>
+    <string name="question_mideast">Суэцкий канал соединяет Красное море и Индийский океан.</string>
+    <string name="question_africa">Исток реки Нил находится в Египте.</string>
+    <string name="question_americas">Река Амазонка - самая длинная река в Северной и Южной Америке.</string>
+    <string name="question_asia">Байкал - самое древнее и глубокое пресноводное озеро в мире.</string>
+    <string name="true_button">Правда</string>
+    <string name="false_button">Ложь</string>
+    <string name="next_button">След.</string>
+    <string name="prev_button">Пред.</string>
+    <string name="correct_toast">Правильно!</string>
+    <string name="incorrect_toast">Неправильно!</string>
+    <string name="result_toast">Вы ответили на %1$d%% вопросов правильно!</string>
+</resources>
