@@ -61,6 +61,12 @@ class MainActivity : AppCompatActivity() {
             toggleAnswerButtons()
         }
 
+        binding.prevButton.setOnClickListener {
+            currentIndex = (currentIndex - 1) % questionBank.size
+            updateQuestion()
+            toggleAnswerButtons()
+        }
+
         updateQuestion()
     }
 
