@@ -25,15 +25,24 @@
             android:id="@+id/true_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/true_button" />
+            android:text="@string/true_button"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/false_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/false_button" />
+            android:text="@string/false_button"
+            style="?android:attr/buttonBarButtonStyle" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/cheat_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/cheat_button" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -46,7 +55,8 @@
             android:layout_height="wrap_content"
             android:text="@string/prev_button"
             app:icon="@drawable/arrow_left"
-            app:iconGravity="start"/>
+            app:iconGravity="start"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/next_button"
@@ -54,7 +64,8 @@
             android:layout_height="wrap_content"
             android:text="@string/next_button"
             app:icon="@drawable/arrow_right"
-            app:iconGravity="end"/>
+            app:iconGravity="end"
+            style="?android:attr/buttonBarButtonStyle" />
 
     </LinearLayout>
 
