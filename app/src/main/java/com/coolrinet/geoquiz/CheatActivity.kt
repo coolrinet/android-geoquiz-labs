@@ -3,6 +3,7 @@ package com.coolrinet.geoquiz
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.coolrinet.geoquiz.databinding.ActivityCheatBinding
@@ -33,6 +34,14 @@ class CheatActivity : AppCompatActivity() {
             binding.answerTextView.text = answerText
             setAnswerShownResult(true)
         }
+
+        updateAPIVersion()
+    }
+
+    private fun updateAPIVersion() {
+        val apiVersion = Build.VERSION.SDK_INT
+        val apiVersionText = getString(R.string.api_version, apiVersion)
+        binding.apiVersionTextView.text = apiVersionText
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

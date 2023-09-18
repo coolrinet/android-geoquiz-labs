@@ -18,4 +18,5 @@
     <string name="cheat_button">Сжульничать!</string>
     <string name="judgment_toast">Жульничать - это плохо.</string>
     <string name="remaining_hints">Оставшиеся подсказки: %1$d</string>
+    <string name="api_version">Версия API: %1$d</string>
 </resources>

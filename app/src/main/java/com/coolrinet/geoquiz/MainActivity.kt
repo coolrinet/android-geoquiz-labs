@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             if (quizViewModel.countAnsweredQuestions() == quizViewModel.totalQuestionCount) {
                 binding.nextButton.isVisible = false
                 binding.prevButton.isVisible = false
+                binding.cheatButton.isVisible = false
                 showResult()
             }
         }
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             if (quizViewModel.countAnsweredQuestions() == quizViewModel.totalQuestionCount) {
                 binding.nextButton.isVisible = false
                 binding.prevButton.isVisible = false
+                binding.cheatButton.isVisible = false
                 showResult()
             }
         }
@@ -169,6 +171,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun toggleCheatButton() {
         binding.cheatButton.isVisible =
-            !(quizViewModel.isCheater || quizViewModel.remainingHints == 0)
+            !(quizViewModel.isCheater || quizViewModel.remainingHints == 0
+                    || quizViewModel.checkCurrentQuestionStatus())
     }
 }

@@ -37,27 +37,18 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <Button
+        android:id="@+id/cheat_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_marginTop="24dp"
+        android:text="@string/cheat_button" />
 
-        <Button
-            android:id="@+id/cheat_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/cheat_button"
-            style="?android:attr/buttonBarButtonStyle"/>
-
-        <TextView
-            android:id="@+id/remaining_hints"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/remaining_hints"/>
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/remaining_hints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/remaining_hints"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
