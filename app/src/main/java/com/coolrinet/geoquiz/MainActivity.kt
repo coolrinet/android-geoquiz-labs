@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
             if (quizViewModel.countAnsweredQuestions() == quizViewModel.totalQuestionCount) {
                 binding.nextButton.isVisible = false
                 binding.prevButton.isVisible = false
-                binding.cheatButton.isVisible = false
                 showResult()
             }
         }
@@ -60,7 +59,6 @@ class MainActivity : AppCompatActivity() {
             if (quizViewModel.countAnsweredQuestions() == quizViewModel.totalQuestionCount) {
                 binding.nextButton.isVisible = false
                 binding.prevButton.isVisible = false
-                binding.cheatButton.isVisible = false
                 showResult()
             }
         }
@@ -128,15 +126,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = quizViewModel.currentQuestionAnswer
-        val messageResId: Int
-
-        when {
-            quizViewModel.isCheater -> messageResId = R.string.judgment_toast
-            userAnswer == correctAnswer -> {
-                messageResId = R.string.correct_toast
+        val messageResId = when {
+            quizViewModel.isCheater -> {
                 quizViewModel.rightQuestionCount += 1
+                R.string.judgment_toast
             }
-            else -> messageResId = R.string.incorrect_toast
+            userAnswer == correctAnswer -> {
+                quizViewModel.rightQuestionCount += 1
+                R.string.correct_toast
+            }
+            else -> R.string.incorrect_toast
         }
 
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
@@ -144,13 +143,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toggleAnswerButtons() {
-        if (quizViewModel.checkCurrentQuestionStatus()) {
-            binding.trueButton.isVisible = false
-            binding.falseButton.isVisible = false
-        } else {
-            binding.trueButton.isVisible = true
-            binding.falseButton.isVisible = true
-        }
+        val currentQuestionStatus = quizViewModel.checkCurrentQuestionStatus()
+        binding.trueButton.isVisible = !currentQuestionStatus
+        binding.falseButton.isVisible = !currentQuestionStatus
     }
 
     private fun showResult() {
