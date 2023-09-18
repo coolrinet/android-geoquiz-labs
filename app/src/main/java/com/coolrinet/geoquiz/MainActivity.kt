@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         if (result.resultCode == Activity.RESULT_OK) {
             quizViewModel.isCheater =
                 result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+            quizViewModel.remainingHints -= 1
+            updateRemainingHints()
+            toggleCheatButton()
         }
     }
 
@@ -38,6 +41,8 @@ class MainActivity : AppCompatActivity() {
             checkAnswer(true)
             quizViewModel.changeCurrentQuestionStatus(true)
             toggleAnswerButtons()
+            toggleCheatButton()
+
             if (quizViewModel.countAnsweredQuestions() == quizViewModel.totalQuestionCount) {
                 binding.nextButton.isVisible = false
                 binding.prevButton.isVisible = false
@@ -49,6 +54,8 @@ class MainActivity : AppCompatActivity() {
             checkAnswer(false)
             quizViewModel.changeCurrentQuestionStatus(true)
             toggleAnswerButtons()
+            toggleCheatButton()
+
             if (quizViewModel.countAnsweredQuestions() == quizViewModel.totalQuestionCount) {
                 binding.nextButton.isVisible = false
                 binding.prevButton.isVisible = false
@@ -60,12 +67,14 @@ class MainActivity : AppCompatActivity() {
             quizViewModel.moveToNext()
             updateQuestion()
             toggleAnswerButtons()
+            toggleCheatButton()
         }
 
         binding.prevButton.setOnClickListener {
             quizViewModel.moveToPrev()
             updateQuestion()
             toggleAnswerButtons()
+            toggleCheatButton()
         }
 
         binding.cheatButton.setOnClickListener {
@@ -75,7 +84,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         updateQuestion()
+        updateRemainingHints()
         toggleAnswerButtons()
+        toggleCheatButton()
+
         if (quizViewModel.countAnsweredQuestions() == quizViewModel.totalQuestionCount) {
             binding.nextButton.isVisible = false
             binding.prevButton.isVisible = false
@@ -147,5 +159,16 @@ class MainActivity : AppCompatActivity() {
             resultText,
             Toast.LENGTH_SHORT
         ).show()
+    }
+
+    private fun updateRemainingHints() {
+        val remainingHints = quizViewModel.remainingHints
+        val remainingHintsText = getString(R.string.remaining_hints, remainingHints)
+        binding.remainingHints.text = remainingHintsText
+    }
+
+    private fun toggleCheatButton() {
+        binding.cheatButton.isVisible =
+            !(quizViewModel.isCheater || quizViewModel.remainingHints == 0)
     }
 }

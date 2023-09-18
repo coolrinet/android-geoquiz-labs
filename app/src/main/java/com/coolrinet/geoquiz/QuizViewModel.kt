@@ -8,6 +8,7 @@ import kotlin.math.round
 private const val TAG = "QuizViewModel"
 const val CURRENT_INDEX_KEY = "CURRENT_INDEX_KEY"
 const val IS_CHEATER_KEY = "IS_CHEATER_KEY"
+const val REMAINING_HINTS_KEY = "REMAINING_HINTS_KEY"
 
 class QuizViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
     init {
@@ -37,6 +38,10 @@ class QuizViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
         set(value) = savedStateHandle.set(CURRENT_INDEX_KEY, value)
 
     var rightQuestionCount = 0f
+
+    var remainingHints: Int
+        get() = savedStateHandle[REMAINING_HINTS_KEY] ?: 3
+        set(value) = savedStateHandle.set(REMAINING_HINTS_KEY, value)
 
     val currentQuestionAnswer: Boolean
         get() = questionBank[currentIndex].answer
